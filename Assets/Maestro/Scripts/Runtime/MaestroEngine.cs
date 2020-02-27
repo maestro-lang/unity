@@ -10,17 +10,9 @@ public sealed class MaestroEngine : ScriptableObject
 	public Mode mode = Mode.Debug;
 	public bool registerStdLib = true;
 
-	public Object someAssetMaybe;
-
 	private Engine engine;
 	private Debugger debugger;
 	private StringBuilder cachedStringBuilder = new StringBuilder();
-
-	[ContextMenu("ASdasd")]
-	public void Asdasd()
-	{
-		Debug.Log(someAssetMaybe.GetType().Name);
-	}
 
 	public bool TryCompile(string sourceName, string sourceContent, out Executable executable)
 	{

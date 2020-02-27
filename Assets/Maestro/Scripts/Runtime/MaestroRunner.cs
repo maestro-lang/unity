@@ -3,12 +3,11 @@
 public sealed class MaestroRunner : MonoBehaviour
 {
 	public MaestroEngine engine;
-	[Multiline]
-	public string source;
+	public MaestroSource source;
 
 	private void Start()
 	{
-		engine.TryCompile("source", source, out var executable);
-		engine.TryExecute(executable);
+		source.Compile(engine);
+		source.Execute(engine);
 	}
 }
