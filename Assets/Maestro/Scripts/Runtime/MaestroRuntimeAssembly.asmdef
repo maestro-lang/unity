@@ -7,7 +7,8 @@
     "overrideReferences": true,
     "precompiledReferences": [
         "Lib.dll",
-        "StdLib.dll"
+        "StdLib.dll",
+        "DebugLib.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],
