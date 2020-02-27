@@ -1,0 +1,21 @@
+{
+    "name": "MaestroEditorAssembly",
+    "references": [
+        "GUID:9334cc4d0f7396d4f9bf46dde296f57a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Lib.dll",
+        "StdLib.dll",
+        "DebugLib.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13523a1cf8b6347468c1c654f6f7d48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  engine: {fileID: 11400000, guid: 4fee7fd35ec500f428e9cd70bb3c3fdc, type: 2}
   source: '"fala galera!!" | print;'
 --- !u!4 &813759808
 Transform:
