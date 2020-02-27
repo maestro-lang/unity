@@ -1,1 +1,7 @@
-﻿"hello world!" | print;
+﻿if true | delay 5 {
+	trigger "Target" | delay 0.5 | $is-colliding;
+	$is-colliding | change-color "Target";
+	"is colliding?", $is-colliding | print;
+} else {
+	"waiting" | print;
+}

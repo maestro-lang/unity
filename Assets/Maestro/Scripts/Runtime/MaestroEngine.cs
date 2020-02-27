@@ -4,11 +4,12 @@ using Maestro.StdLib;
 using Maestro.Debug;
 using System.Text;
 
-[CreateAssetMenu(menuName = "Maestro/Maestro Engine")]
+[CreateAssetMenu(menuName = "Maestro/Maestro Engine", order = 84)]
 public sealed class MaestroEngine : ScriptableObject
 {
 	public Mode mode = Mode.Debug;
 	public bool registerStdLib = true;
+	public MaestroCommandRegistry[] commandRegistries;
 
 	private Engine engine;
 	private Debugger debugger;
@@ -60,6 +61,9 @@ public sealed class MaestroEngine : ScriptableObject
 			engine.RegisterStandardCommands(Debug.Log);
 			engine.RegisterOperationCommands();
 			engine.RegisterTypeCommands();
+
+			foreach (var registry in commandRegistries)
+				registry.RegisterCommands(engine);
 		}
 
 		if (mode == Mode.Debug)

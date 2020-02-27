@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7806035145aac6645ba7d5300b02e912, type: 3}
-  m_Name: MaestroEngine
+  m_Script: {fileID: 11500000, guid: 7d28ad873dc26004ba6336f8c002d9f6, type: 3}
+  m_Name: Example Command Registry
   m_EditorClassIdentifier: 
-  mode: 1
-  registerStdLib: 1
-  someAssetMaybe: {fileID: 102900000, guid: a30d0cc065e8adc468a6e5a0dc2fc2df, type: 3}

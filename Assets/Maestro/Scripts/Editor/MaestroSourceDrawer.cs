@@ -8,11 +8,9 @@ public sealed class MaestroSourceDrawer : PropertyDrawer
 
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 	{
-		const string searchPath = "Assets/StreamingAssets";
-
 		if (paths == null)
 		{
-			var guids = AssetDatabase.FindAssets("", new string[] { searchPath });
+			var guids = AssetDatabase.FindAssets("", new string[] { MaestroScriptCreator.ScriptsPath });
 			paths = new GUIContent[guids.Length];
 
 			var pathsIndex = 0;
@@ -20,12 +18,12 @@ public sealed class MaestroSourceDrawer : PropertyDrawer
 			{
 				const string extension = ".maestro";
 				var path = AssetDatabase.GUIDToAssetPath(guid);
-				if (!path.EndsWith(extension) || !path.StartsWith(searchPath))
+				if (!path.EndsWith(extension) || !path.StartsWith(MaestroScriptCreator.ScriptsPath))
 					continue;
 
 				var name = path.Substring(
-					searchPath.Length + 1,
-					path.Length - extension.Length - searchPath.Length - 1
+					MaestroScriptCreator.ScriptsPath.Length + 1,
+					path.Length - extension.Length - MaestroScriptCreator.ScriptsPath.Length - 1
 				);
 				paths[pathsIndex++] = new GUIContent(name);
 			}
@@ -46,7 +44,7 @@ public sealed class MaestroSourceDrawer : PropertyDrawer
 
 			var helpBoxPosition = position;
 			helpBoxPosition.xMin += labelPosition.width;
-			EditorGUI.HelpBox(helpBoxPosition, $"No Maestro script in '{searchPath}'", MessageType.Warning);
+			EditorGUI.HelpBox(helpBoxPosition, $"No Maestro script in '{MaestroScriptCreator.ScriptsPath}'", MessageType.Warning);
 		}
 		else
 		{

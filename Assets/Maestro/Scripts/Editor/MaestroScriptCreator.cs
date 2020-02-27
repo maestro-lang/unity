@@ -1,12 +1,15 @@
 ﻿using UnityEditor;
 using System.IO;
+using UnityEngine;
 
 public static class MaestroScriptCreator
 {
-	[MenuItem("Assets/Create/Maestro/Maestro Script", false, 10)]
+	public const string ScriptsPath = "Assets/StreamingAssets";
+
+	[MenuItem("Assets/Create/Maestro/Maestro Script", false, 84)]
 	public static void CreateScript()
 	{
-		var path = "Assets/";
+		var path = ScriptsPath;
 		if (Selection.activeObject != null)
 		{
 			path = AssetDatabase.GetAssetPath(Selection.activeObject);
@@ -16,5 +19,8 @@ public static class MaestroScriptCreator
 
 		path = Path.Combine(path, "MaestroScript.maestro");
 		ProjectWindowUtil.CreateAssetWithContent(path, "");
+
+		if (!path.StartsWith(ScriptsPath))
+			Debug.LogWarningFormat("Maestro script path '{0}' is outside of '{1}'", path, ScriptsPath);
 	}
 }

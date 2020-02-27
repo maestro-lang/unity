@@ -7,7 +7,12 @@ public sealed class MaestroRunner : MonoBehaviour
 
 	private void Start()
 	{
-		source.Compile(engine);
+		if (!source.Compile(engine))
+			enabled = false;
+	}
+
+	private void Update()
+	{
 		source.Execute(engine);
 	}
 }
