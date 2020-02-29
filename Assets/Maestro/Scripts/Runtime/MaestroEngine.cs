@@ -10,6 +10,7 @@ public sealed class MaestroEngine : ScriptableObject
 	public Mode mode = Mode.Debug;
 	public bool registerStdLib = true;
 	public MaestroCommandRegistry[] commandRegistries;
+	public MaestroSource[] libSources;
 
 	private Engine engine;
 	private Debugger debugger;
@@ -81,6 +82,11 @@ public sealed class MaestroEngine : ScriptableObject
 
 			foreach (var registry in commandRegistries)
 				registry.RegisterCommands(engine);
+
+			foreach (var source in libSources)
+				source.Compile(this);
+			foreach (var source in libSources)
+				source.Link(this);
 		}
 
 		if (mode == Mode.Debug)
