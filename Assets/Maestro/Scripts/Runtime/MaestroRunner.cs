@@ -3,16 +3,29 @@
 public sealed class MaestroRunner : MonoBehaviour
 {
 	public MaestroEngine engine;
-	public MaestroSource source;
+	public MaestroSource[] sources;
 
 	private void Start()
 	{
-		if (!source.Compile(engine))
-			enabled = false;
+		foreach (var source in sources)
+		{
+			if (!source.Compile(engine))
+				enabled = false;
+		}
+
+		if (!enabled)
+			return;
+
+		foreach (var source in sources)
+		{
+			if (!source.Link(engine))
+				enabled = false;
+		}
 	}
 
 	private void Update()
 	{
-		source.Execute(engine);
+		foreach (var source in sources)
+			source.Execute(engine);
 	}
 }

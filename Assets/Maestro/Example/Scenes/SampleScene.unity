@@ -368,8 +368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   engine: {fileID: 11400000, guid: 4fee7fd35ec500f428e9cd70bb3c3fdc, type: 2}
-  source:
-    path: MaestroScripts/SampleScript
+  sources:
+  - path: MaestroScripts/SampleScript
 --- !u!4 &813759808
 Transform:
   m_ObjectHideFlags: 0

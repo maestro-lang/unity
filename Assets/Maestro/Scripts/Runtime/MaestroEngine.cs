@@ -15,11 +15,11 @@ public sealed class MaestroEngine : ScriptableObject
 	private Debugger debugger;
 	private StringBuilder cachedStringBuilder = new StringBuilder();
 
-	public bool TryCompile(string sourceName, string sourceContent, out Executable executable)
+	public bool TryCompile(string sourceName, string sourceContent, out Assembly assebly)
 	{
 		var source = new Source(sourceName, sourceContent);
 		var compileResult = engine.CompileSource(source, mode);
-		if (compileResult.TryGetExecutable(out executable))
+		if (compileResult.TryGetAssembly(out assebly))
 		{
 			return true;
 		}
@@ -27,6 +27,23 @@ public sealed class MaestroEngine : ScriptableObject
 		{
 			cachedStringBuilder.Clear();
 			compileResult.FormatErrors(cachedStringBuilder);
+			Debug.LogError(cachedStringBuilder);
+
+			return false;
+		}
+	}
+
+	public bool TryLink(Assembly assembly, out Executable executable)
+	{
+		var linkResult = engine.LinkAssembly(assembly);
+		if (linkResult.TryGetExecutable(out executable))
+		{
+			return true;
+		}
+		else
+		{
+			cachedStringBuilder.Clear();
+			linkResult.FormatErrors(cachedStringBuilder);
 			Debug.LogError(cachedStringBuilder);
 
 			return false;
