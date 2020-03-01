@@ -80,13 +80,19 @@ public sealed class MaestroEngine : ScriptableObject
 			engine.RegisterOperationCommands();
 			engine.RegisterTypeCommands();
 
-			foreach (var registry in commandRegistries)
-				registry.RegisterCommands(engine);
+			if (commandRegistries != null)
+			{
+				foreach (var registry in commandRegistries)
+					registry.RegisterCommands(engine);
+			}
 
-			foreach (var source in libSources)
-				source.Compile(this);
-			foreach (var source in libSources)
-				source.Link(this);
+			if (libSources != null)
+			{
+				foreach (var source in libSources)
+					source.Compile(this);
+				foreach (var source in libSources)
+					source.Link(this);
+			}
 		}
 
 		if (mode == Mode.Debug)
